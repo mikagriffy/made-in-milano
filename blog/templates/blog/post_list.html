@@ -1,19 +1,13 @@
-<html>
-    <head>
-        <title>Made in Milano</title>
-        <h1> made in Milano </h1>
+{% extends 'blog/base.html' %}
 
-    </head>
-    <body>
-
-
+{% block content %}
     {% for post in posts %}
-        <div>
-      
-            <h1><a href="">{{ post.title }}</a></h1>
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <p>{{ post.text|linebreaksbr }}</p>
         </div>
     {% endfor %}
-
-    </body>
-</html>
+{% endblock content %}
